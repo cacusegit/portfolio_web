@@ -3,15 +3,16 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 import pandas as pd
 import plotly.graph_objs as go
-from dash import dcc, html
 
-today = datetime.today().strftime('%Y-%m-%d')
+today_ = datetime.today().strftime('%Y-%m-%d')
+sort = datetime.today().year
+
 
 chrome_options = webdriver.ChromeOptions()
 chrome_options.add_argument("--headless=new")
 chrome_options.add_experimental_option("detach", True)
 driver = webdriver.Chrome(chrome_options)
-driver.get(f'https://github.com/cacusegit?tab=overview&from=2025-01-01&to={today}')
+driver.get(f'https://github.com/cacusegit?tab=overview&from=2025-01-01&to={today_}')
 driver.implicitly_wait(10)
 
 
@@ -69,6 +70,9 @@ def create_df(scraped_data):
 
 def create_graph(data_file):
     df = pd.read_csv(data_file)
+
+    df["Date"] = pd.to_datetime(df['Date'] + " " + str(sort), format='%B %d %Y')
+    df = df.sort_values(by="Date")
 
     fig = go.Figure(data=[go.Bar(
         x=df['Date'],
