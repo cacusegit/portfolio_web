@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'Konkhmer Sleokchher';
-    src: url('static/assets/fonts/konkhmer-sleokchher/ttf/konkhmer-sleokchher-latin-ext-400-normal.ttf') format('truetype')
+    src: url('/static/assets/fonts/konkhmer-sleokchher/ttf/konkhmer-sleokchher-latin-ext-400-normal.ttf') format('truetype')
 }
 
 body {
@@ -35,6 +35,7 @@ body {
     padding-left: 200px;
     padding-right: 200px;
     width: 100%;
+    z-index: 1000;
 }
 .navBox-inline-left {
     margin-right: auto;
@@ -54,6 +55,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 100px;
 }
 .about-inline-left {
     width: 40%;
@@ -70,7 +72,7 @@ body {
     background-color: #503b61;
 }
 .footer_position {
-    position: absolute;
+    display: flex;
     bottom: 0;
     width: 100%;
     height: 2.5rem;
@@ -84,4 +86,61 @@ body {
     padding-left: 200px;
     padding-right: 200px;
     padding-bottom: 10px;
+}
+.graph_container {
+    border: 2px solid #afb1cf;
+    border-radius: 15px;
+    overflow: hidden;
+    height: auto;
+    max-width: 100%;
+    margin: 20px auto;
+    margin-bottom: 100px;
+    position: relative;
+    z-index: 0;
+}
+.projects_outer {
+    background: #503b61;
+    margin-right: -200px;
+    margin-left: -200px;
+    padding-left: 200px;
+    padding-right: 200px;
+    padding-bottom: 100px;
+    padding-top: 10px;
+    text-align: center;
+    justify-content: center;
+    font-size: 25px;
+}
+.projects_inner {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 100%;
+}
+
+.projects_container {
+    display: grid;
+    gap: 30px 50px;
+    grid-template-columns: auto auto auto;
+    padding: 10px;
+}
+.projects_container > div {
+    background-color: rgb(20,20,26);
+    border: 2px solid #afb1cf;
+    border-radius: 15px;
+    padding: 20px;
+    font-size: 20px;
+    text-align: center;
+    height: 200px;
+    width: 330px;
+
+    background-image: url('/static/assets/images/elementor-placeholder-image.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.projects_container > div > p {
+    background-color: rgba(20,20,26, 50%);
+    color: white;
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
 }

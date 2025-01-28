@@ -3,6 +3,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 import pandas as pd
 import plotly.graph_objs as go
+from dash import dcc, html
 
 today = datetime.today().strftime('%Y-%m-%d')
 
@@ -67,25 +68,22 @@ def create_df(scraped_data):
 
 
 def create_graph(data_file):
-    # Load the data (assuming CSV format)
     df = pd.read_csv(data_file)
 
-    # Create a Plotly figure
     fig = go.Figure(data=[go.Bar(
         x=df['Date'],
         y=df['Contributions'],
         marker_color='#a478ae'
     )])
 
-    # Customize the layout
     fig.update_layout(
         title='GitHub Contributions',
         xaxis_title='Date',
         yaxis_title='Contributions',
         paper_bgcolor="#090a0f",
         font_color="#dfe0ec",
-        plot_bgcolor="rgb(20,20,26)"
+        plot_bgcolor="rgb(20,20,26)",
+        hoverlabel=dict(font_color='#dfe0ec')
     )
 
-    # Return the Plotly graph as HTML
     return fig.to_html(full_html=False)
